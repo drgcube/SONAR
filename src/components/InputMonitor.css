@@ -1,0 +1,89 @@
+.input-monitor {
+  --input-color: #c45431;
+  --input-rgb: 196, 84, 49;
+  margin: 17px 0 16px;
+  padding: 15px 15px 13px;
+  border-radius: 9px;
+  background: #f2f0e8;
+  color: #3d493d;
+  min-width: 0;
+}
+.input-monitor.is-clipping {
+  --input-color: #99630d;
+  --input-rgb: 153, 99, 13;
+}
+.input-monitor-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 15px;
+  font-size: 10px;
+}
+.input-monitor-mode {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.input-monitor.is-listening .input-monitor-mode { color: var(--input-color); }
+.input-monitor-mode i { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.input-monitor-time { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.input-monitor-time span, .input-monitor-caption { color: #656e60; }
+.input-monitor-signal {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: 66px;
+}
+.input-monitor-orb {
+  display: grid;
+  place-items: center;
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  border: 1px solid #cbcfc0;
+  border-radius: 50%;
+  color: #76816b;
+  background: #e9ecdf;
+  transform: scale(calc(1 + var(--input-power) * 0.1));
+  box-shadow: 0 0 0 var(--input-halo) rgba(var(--input-rgb), var(--input-halo-alpha));
+  transition: transform 75ms linear, box-shadow 75ms linear;
+}
+.input-monitor.is-listening .input-monitor-orb {
+  color: var(--input-color);
+  border-color: rgba(var(--input-rgb), 0.35);
+  background: rgba(var(--input-rgb), 0.055);
+}
+.input-monitor-wave {
+  display: block;
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+  height: 48px;
+  fill: #879178;
+}
+.input-monitor.is-listening .input-monitor-wave { fill: var(--input-color); }
+.input-monitor-db {
+  width: 35px;
+  flex: 0 0 35px;
+  font-size: 12px;
+  line-height: 1.35;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.input-monitor-db small { display: block; font-size: 9px; color: #656e60; margin-top: 2px; }
+.input-monitor-status { font-size: 12px; line-height: 1.5; font-weight: 500; }
+.input-monitor-device {
+  font-size: 11px;
+  line-height: 1.5;
+  margin-top: 2px;
+  color: #656e60;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+@media (prefers-reduced-motion: reduce) {
+  .input-monitor-orb { transform: none; transition: none; }
+}
